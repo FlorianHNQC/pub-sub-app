@@ -51,7 +51,7 @@ jobs:
 
       - name: Run tests on specified directory
         working-directory: ${{env.TEST_FOLDER}}
-        run: dotnet test --logger trx | cat *.trx
+        run: dotnet test
 
   deploy:
     runs-on: ubuntu-latest
