@@ -15,6 +15,7 @@ jobs:
     env:
       PROJECT_FOLDER: "RabbitMqProductAPI"
       PROJECT_NAME: "RabbitMqProductAPI"
+      TEST_FOLDER: "RabbitMqProductAPI.Tests"
       DOTNET_VERSION: "9.x"
       DOTNET_EF_VERSION: "9.0.1"
 
@@ -47,6 +48,10 @@ jobs:
         with:
           name: .net-app
           path: ${{env.PROJECT_FOLDER}}/myapp
+
+      - name: Run tests on specified directory
+        working-directory: ${{env.TEST_FOLDER}}
+        run: dotnet test --logger trx | echo *.trx
 
   deploy:
     runs-on: ubuntu-latest
